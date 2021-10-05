@@ -1,0 +1,14 @@
+#prepare service
+npm init -y
+npm install typescript ts-node-dev express @types/express
+auth/  tsc --init 
+
+#install skaffold
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+
+#install ingress: 
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.3/deploy/static/provider/cloud/deploy.yaml
+change host file
+
+'thisisunsafe' to  skip chrome ssl security 
