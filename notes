@@ -12,3 +12,13 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 change host file
 
 'thisisunsafe' to  skip chrome ssl security 
+
+npm install --save express-validator
+npm install express-async-errors
+npm install mongoose
+npm install cookie-session  (optional native types support: @types/cookie-session)
+npm install jsonwebtoken @types/jsonwebtoken 
+https://jwt.io/
+
+kubectl create secret generic jwt-secret --from-literal=jwt_key=mysecretpass
+kubectl get secrets
