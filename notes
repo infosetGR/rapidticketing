@@ -1,4 +1,5 @@
 #prepare service
+mkdir auth
 npm init -y
 npm install typescript ts-node-dev express @types/express
 auth/  tsc --init 
@@ -22,3 +23,10 @@ https://jwt.io/
 
 kubectl create secret generic jwt-secret --from-literal=jwt_key=mysecretpass
 kubectl get secrets
+
+npm install --save-dev @types/jest @types/supertest jest ts-jest supertest mongodb-memory-server
+npm run test
+
+mkdir client
+npm install react react-dom next
+npm run dev
