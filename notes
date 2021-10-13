@@ -39,3 +39,7 @@ npm install axios
 kubectl get services -n ingress-nginx 
 
 http://ingress-nginx-controller.ingress-nginx.svc.cluster.local
+
+//Publishing npm modules
+mkdir common
+npm init -y
