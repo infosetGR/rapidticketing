@@ -43,3 +43,30 @@ http://ingress-nginx-controller.ingress-nginx.svc.cluster.local
 //Publishing npm modules
 mkdir common
 npm init -y
+-- change package.json
+npm login
+npm publish --access public
+// setup of common
+tsc --init
+npm install typescript del-cli --save-dev
+-- package.json  
+add main, types, files
+    "clean": "del-cli ./build/*",
+    "build": "npm run clean && tsc"
+--- tsconfig.json  
+  "declaration": true,
+  "outDir": "./build",
+
+npm version patch (update version)
+npm run build
+npm publish
+
+move errors and middleware to common
+npm install express express-validator cookie-session jsonwebtoken @types/cookie-session @types/express @types/jsonwebtoken
+
+// install to auth module & change references
+npm install @infoset.co/common
+npm update @infoset.co/common
+
+//verify version
+kubectl exec -it auth-depl-43kmjnjk2h4 sh
