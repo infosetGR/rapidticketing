@@ -4,5 +4,8 @@ export interface OrderDeletedEvent {
   subject: Subjects.OrderDeleted;
   data: {
     id: string;
+    ticket: {
+      id:string;
+    }
   };
 }
