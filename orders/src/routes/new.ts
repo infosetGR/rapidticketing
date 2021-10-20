@@ -52,6 +52,7 @@ async (req: Request, res:Response) => {
 
 await new OrderCreatedPublisher(natsWrapper.client).publish({
   id: order.id,
+  version:order.version,
   status: order.status,
   expiresAt: order.expiresAt.toISOString(),
   userId:order.userId,

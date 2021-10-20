@@ -1,10 +1,12 @@
 import mongoose from 'mongoose';
 import { isJsxAttributes, isThisTypeNode } from 'typescript';
 import { Order, OrderStatus } from './order';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
 // An interface that describes the properties
 // that are requried to create a new Ticket
 interface TicketAttrs {
+  id: string;
   title: string;
   price: number;
 }
@@ -13,6 +15,7 @@ interface TicketAttrs {
 // that a Ticket Model has
 interface TicketModel extends mongoose.Model<TicketDoc> {
   build(attrs: TicketAttrs): TicketDoc;
+  findByevent(event:{id:string, version:number}):Promise<TicketDoc|null>;
 }
 
 // An interface that describes the properties
@@ -20,6 +23,7 @@ interface TicketModel extends mongoose.Model<TicketDoc> {
 export interface TicketDoc extends mongoose.Document {
   title: string;
   price: number;
+  version:number;
   isReserved(): Promise<boolean>;
 }
 
@@ -48,6 +52,10 @@ const TicketSchema = new mongoose.Schema(
   }
 );
 
+
+TicketSchema.set('versionKey', 'version')
+TicketSchema.plugin(updateIfCurrentPlugin);
+
 // TicketSchema.pre('save', async function (done) {
 //   if (this.isModified('password')) {
 //     const hashed = await Password.toHash(this.get('password'));
@@ -56,9 +64,26 @@ const TicketSchema = new mongoose.Schema(
 //   done();
 // });
 
+// TicketSchema.pre('save', function (done) {
+  // this.$where = { 
+  //   version:this.get('version')-1
+  //   } 
+  // }
+//   done();
+// });
+
 TicketSchema.statics.build = (attrs: TicketAttrs) => {
-  return new Ticket(attrs);
+  return new Ticket({
+    _id: attrs.id, 
+    title:attrs.title,
+    price: attrs.price});
 };
+
+TicketSchema.statics.findByevent = (event:{id:string, version:number}) => {
+  return Ticket.findOne({_id: event.id, version:event.version-1});
+
+}
+
 
 TicketSchema.methods.isReserved = async function() {
   

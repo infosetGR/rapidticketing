@@ -71,9 +71,16 @@ npm update @infoset.co/common
 //verify version
 kubectl exec -it auth-depl-43kmjnjk2h4 sh
 
+
+
 //Setting nats-test
 mkdir nats-test
 npm init -y
 npm install node-nats-streaming ts-node-dev typescript @types/node
 kubectl port-forward nats-depl-76ffc45475-wv6qh 4222:4222
 kubectl port-forward nats-depl-76ffc45475-wv6qh 8222:8222
+
+kubectl exec -it tickets-mongo-depl-685f7f898-tp27w mongo mongodb://localhost:27017/tickets
+
+// update with versioning
+npm install mongoose-update-if-current

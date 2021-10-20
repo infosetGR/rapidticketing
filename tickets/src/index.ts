@@ -1,6 +1,9 @@
 import  mongoose  from 'mongoose';
 import {app} from './app';
 import { natsWrapper } from './nats-wrapper';
+import { OrderCreatedListener } from '../order-created-listener';
+import { OrderDeletedListener } from '../order-deleted-listener';
+
 
 const start = async () => {
 
@@ -41,6 +44,8 @@ const start = async () => {
     console.error(err);
   }
 
+  new OrderCreatedListener(natsWrapper.client).listen();
+  new OrderDeletedListener(natsWrapper.client).listen();
 
 
   app.listen(3000, () => {

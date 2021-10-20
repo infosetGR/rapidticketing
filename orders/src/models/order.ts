@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { OrderStatus} from '@infoset.co/common';
 import {TicketDoc} from './ticket';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
 export {OrderStatus};
 
@@ -23,6 +24,7 @@ interface OrderModel extends mongoose.Model<OrderDoc> {
 // that a Order Document has
 interface OrderDoc extends mongoose.Document {
   userId:string;
+  version:number;
   status: OrderStatus;
   expiresAt: Date;
   ticket: TicketDoc;
@@ -61,6 +63,9 @@ const OrderSchema = new mongoose.Schema(
     }
   }
 );
+
+OrderSchema.set('versionKey', 'version')
+OrderSchema.plugin(updateIfCurrentPlugin);
 
 // OrderSchema.pre('save', async function (done) {
 //   if (this.isModified('password')) {
