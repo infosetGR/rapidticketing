@@ -84,3 +84,7 @@ kubectl exec -it tickets-mongo-depl-685f7f898-tp27w mongo mongodb://localhost:27
 
 // update with versioning
 npm install mongoose-update-if-current
+
+//Expiration
+npm install bull @types/bull 
+docker build -t fotisss/expiration . 
