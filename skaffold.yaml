@@ -4,6 +4,7 @@ deploy:
   kubectl:
     manifests:
       - ./iaac/k8s/*
+      - ./iaac/k8s-dev/*
 build:
   local:
     push: false

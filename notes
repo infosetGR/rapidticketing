@@ -93,3 +93,4 @@ docker build -t fotisss/expiration .
 git checkout -b dev
 
 kubectl config get-contexts
+create secret in prod
