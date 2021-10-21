@@ -6,7 +6,7 @@ import { TicketUpdatedListener } from './events/listeners/ticket-updated-listene
 import { ExpirationOrderListener } from './events/listeners/expiration-order-listener';
 
 const start = async () => {
-
+  console.log('starting up .! ');
   if (!process.env.jwt_key){
         throw new Error('Environment variable jwt key is missing');
     }
