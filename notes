@@ -91,3 +91,5 @@ docker build -t fotisss/expiration .
 
 //Git workflow
 git checkout -b dev
+
+kubectl config get-contexts
