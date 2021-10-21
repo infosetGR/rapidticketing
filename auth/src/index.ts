@@ -2,7 +2,7 @@ import  mongoose  from 'mongoose';
 import {app} from './app';
 
 const start = async () => {
-  console.log('starting up 1 ');
+  console.log('starting up 1.. ');
   if (!process.env.jwt_key){
         throw new Error('Environment variable jwt key is missing');
     }
