@@ -88,3 +88,6 @@ npm install mongoose-update-if-current
 //Expiration
 npm install bull @types/bull 
 docker build -t fotisss/expiration . 
+
+//Git workflow
+git checkout -b dev
