@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: orders
-          image: fotisss/orders
+          image:  us.gcr.io/rapidticketing/orders
           env:
             - name: NATS_CLIENT_ID
               valueFrom:
