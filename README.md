@@ -3,7 +3,6 @@
 Sample ticket purchasing system on microservices with Node, React and Kubernetes
 
     * Scalable app with a collection of microservices
-    
     * Multi cloud deployment with Docker and Kubernetes
     * Distributed systems environment and concurrency handling
     * Server-Side Rendered React App, stripe integration for payments
