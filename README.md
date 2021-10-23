@@ -10,5 +10,6 @@ Sample ticket purchasing system on microservices with Node, React and Kubernetes
     * Npm packages for reusable code between microservices
     * Test driven development
     * NATS event bus for messages orchestration
-   Created during Stephen Grider course
+    
+    Created during Stephen Grider's course
     
