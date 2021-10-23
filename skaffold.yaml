@@ -3,8 +3,8 @@ kind: Config
 deploy:
   kubectl:
     manifests:
-      - ./iaac/k8s/*
       - ./iaac/k8s-dev/*
+      - ./iaac/k8s/*
 build:
   local:
     push: false

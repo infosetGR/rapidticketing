@@ -4,9 +4,10 @@ import { natsWrapper } from './nats-wrapper';
 import { TicketCreatedListener } from './events/listeners/ticket-created-listener';
 import { TicketUpdatedListener } from './events/listeners/ticket-updated-listener';
 import { ExpirationOrderListener } from './events/listeners/expiration-order-listener';
+import { PaymentCreatedListener } from './events/listeners/payment-created-listener';
 
 const start = async () => {
-
+  console.log('starting up .! ');
   if (!process.env.jwt_key){
         throw new Error('Environment variable jwt key is missing');
     }
@@ -47,6 +48,7 @@ const start = async () => {
   new TicketCreatedListener(natsWrapper.client).listen();
   new TicketUpdatedListener(natsWrapper.client).listen();
   new ExpirationOrderListener(natsWrapper.client).listen();
+  new PaymentCreatedListener(natsWrapper.client).listen();
 
   app.listen(3000, () => {
     console.log('Listening on port 3000!!!!!!!!');

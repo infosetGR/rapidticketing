@@ -6,7 +6,7 @@ import { OrderDeletedListener } from './events/listeners/order-deleted-listener'
 
 
 const start = async () => {
-
+  console.log('starting up 1..! ');
   if (!process.env.jwt_key){
         throw new Error('Environment variable jwt key is missing');
     }

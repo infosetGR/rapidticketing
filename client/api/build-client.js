@@ -6,7 +6,8 @@ const buildclient = ({ req }) => {
     console.log('window undefined');
     return axios.create({
       baseURL:
-        'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+        // 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+           'http://ticketing.infoset.co/',
       headers: req.headers,
     });
   } else {

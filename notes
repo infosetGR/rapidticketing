@@ -9,7 +9,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 
 #install ingress: 
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.3/deploy/static/provider/cloud/deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.4/deploy/static/provider/cloud/deploy.yaml
+
+
 change host file
 
 'thisisunsafe' to  skip chrome ssl security 
@@ -21,7 +23,9 @@ npm install cookie-session  (optional native types support: @types/cookie-sessio
 npm install jsonwebtoken @types/jsonwebtoken 
 https://jwt.io/
 
-kubectl create secret generic jwt-secret --from-literal=jwt_key=mysecretpass
+kubectl create secret generic jwt-secret --from-literal jwt_key=mysecretpass
+kubectl create secret generic stripe-secret --from-literal stripe_key=sk_test_GaP9...
+
 kubectl get secrets
 
 npm install --save-dev @types/jest @types/supertest jest ts-jest supertest mongodb-memory-server
@@ -94,3 +98,7 @@ git checkout -b dev
 
 kubectl config get-contexts
 create secret in prod
+
+npm install stripe
+ // token always work in test: "token":tok_visa
+ npm install dotenv --save
