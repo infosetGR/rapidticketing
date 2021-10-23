@@ -24,7 +24,7 @@ npm install jsonwebtoken @types/jsonwebtoken
 https://jwt.io/
 
 kubectl create secret generic jwt-secret --from-literal jwt_key=mysecretpass
-kubectl create secret generic stripe-secret --from-literal stripe_key=sk_test_GaP9...
+kubectl create secret generic stripe-secret --from-literal stripe_key=sk_test_GaP9HZLfBRbV0uye....
 
 kubectl get secrets
 
@@ -102,3 +102,15 @@ create secret in prod
 npm install stripe
  // token always work in test: "token":tok_visa
  npm install dotenv --save
+
+ //gcloud setup
+ // ticketingdev cluster
+ gcloud container clusters get-credentials ticketingdev
+
+//install nginx in gce
+ kubectl create clusterrolebinding cluster-admin-binding  --clusterrole cluster-admin  --user $(gcloud config get-value account)
+
+gcloud auth application-default login
+gcloud components install kubectl
+
+npm install react-stripe-checkout

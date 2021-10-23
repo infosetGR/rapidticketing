@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: fotisss/client
+          image:  us.gcr.io/rapidticketing/client
 ---
 apiVersion: v1
 kind: Service

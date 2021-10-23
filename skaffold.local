@@ -3,15 +3,13 @@ kind: Config
 deploy:
   kubectl:
     manifests:
-      - ./iaac/k8s-prod/*
+      - ./iaac/k8s-dev/*
       - ./iaac/k8s/*
 build:
-  # local:
-  #   push: false
-  googleCloudBuild:
-    projectId: rapidticketing
+  local:
+    push: false
   artifacts:
-    - image: us.gcr.io/rapidticketing/auth
+    - image: fotisss/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -19,7 +17,7 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: us.gcr.io/rapidticketing/client
+    - image: fotisss/client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -27,7 +25,7 @@ build:
         manual:
           - src: "**/*.js"
             dest: .
-    - image: us.gcr.io/rapidticketing/tickets
+    - image: fotisss/tickets
       context: tickets
       docker:
         dockerfile: Dockerfile
@@ -35,7 +33,7 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: us.gcr.io/rapidticketing/orders
+    - image: fotisss/orders
       context: orders
       docker:
         dockerfile: Dockerfile
@@ -43,7 +41,7 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: us.gcr.io/rapidticketing/expiration
+    - image: fotisss/expiration
       context: expiration
       docker:
         dockerfile: Dockerfile
@@ -51,7 +49,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/rapidticketing/payments
+    - image: fotisss/payments
       context: payments
       docker:
         dockerfile: Dockerfile
