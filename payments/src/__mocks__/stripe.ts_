@@ -1,0 +1,13 @@
+  export const stripe = {
+    charges: {
+      // publish: (subject: string, data: string, callback: ()=> void) => {
+      //   }
+      // }
+      create: jest.fn().mockResolvedValue({})
+          
+      
+      }
+  
+    }
+  
+    
